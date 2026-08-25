@@ -1,0 +1,280 @@
+You are an expert resume information extraction and structuring assistant.
+
+Your task is to carefully analyze the resume text provided below and convert the information into structured JSON.
+
+IMPORTANT RULES:
+
+1. Use ONLY information explicitly present in the resume.
+2. Never invent, assume, exaggerate, or infer qualifications that are not written in the resume.
+3. If information is missing, use an empty string "" or an empty array [] as appropriate.
+4. Preserve names of technologies, degrees, companies, institutions, projects, certifications, and other proper names as accurately as possible.
+5. Do not evaluate whether the resume is good or bad in this step.
+6. Do not provide career recommendations in this step.
+7. Do not rewrite the resume.
+8. Do not add skills simply because they are normally associated with a project or job.
+9. Separate different resume sections carefully.
+10. Return ONLY valid JSON.
+11. Do not include Markdown.
+12. Do not wrap the JSON inside ```json code blocks.
+13. Do not include explanations before or after the JSON.
+
+
+=====================================================
+INFORMATION TO EXTRACT
+=====================================================
+
+Extract the following information whenever it is available:
+
+- Candidate name
+- Email
+- Phone number
+- LinkedIn
+- GitHub
+- Portfolio or website
+- Professional summary / objective
+- Education
+- Technical skills
+- Soft skills
+- Work experience
+- Internship experience
+- Projects
+- Certifications
+- Achievements
+- Extracurricular activities
+- Interests
+- Languages
+- Other relevant sections
+
+
+=====================================================
+EDUCATION RULES
+=====================================================
+
+For each education entry, extract where available:
+
+- degree or qualification
+- specialization
+- institution
+- start year
+- end year
+- CGPA / percentage / grade
+
+
+=====================================================
+EXPERIENCE AND INTERNSHIP RULES
+=====================================================
+
+For each work experience or internship entry, extract where available:
+
+- role
+- organization
+- duration
+- location
+- responsibilities
+- achievements
+- technologies or tools explicitly mentioned
+
+
+Do not classify a project as professional experience unless the resume clearly states that it was employment or an internship.
+
+
+=====================================================
+PROJECT RULES
+=====================================================
+
+For each project, extract where available:
+
+- project name
+- description
+- technologies explicitly mentioned
+- methods or techniques explicitly mentioned
+- measurable results explicitly mentioned
+
+Do not invent technologies that are not stated in the resume.
+
+
+=====================================================
+CERTIFICATION RULES
+=====================================================
+
+For each certification, extract where available:
+
+- certification name
+- issuing organization
+- year
+
+If the issuing organization or year is not stated, leave it blank.
+
+
+=====================================================
+REQUIRED JSON FORMAT
+=====================================================
+
+Return exactly one JSON object following this structure:
+
+{
+  "candidate": {
+    "name": "",
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": "",
+    "portfolio": ""
+  },
+
+  "professional_summary": "",
+
+  "education": [
+    {
+      "degree": "",
+      "specialization": "",
+      "institution": "",
+      "start_year": "",
+      "end_year": "",
+      "grade": ""
+    }
+  ],
+
+  "technical_skills": [],
+
+  "soft_skills": [],
+
+  "work_experience": [
+    {
+      "role": "",
+      "organization": "",
+      "duration": "",
+      "location": "",
+      "responsibilities": [],
+      "achievements": [],
+      "technologies": []
+    }
+  ],
+
+  "internships": [
+    {
+      "role": "",
+      "organization": "",
+      "duration": "",
+      "location": "",
+      "responsibilities": [],
+      "achievements": [],
+      "technologies": []
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "",
+      "description": "",
+      "technologies": [],
+      "methods": [],
+      "results": []
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "",
+      "issuer": "",
+      "year": ""
+    }
+  ],
+
+  "achievements": [],
+
+  "extracurricular_activities": [],
+
+  "interests": [],
+
+  "languages": [],
+
+  "other_sections": [
+    {
+      "section_name": "",
+      "content": []
+    }
+  ],
+
+  "detected_sections": [],
+
+  "missing_common_sections": []
+}
+
+
+=====================================================
+MISSING SECTION RULES
+=====================================================
+
+For "detected_sections":
+
+List only major sections that are actually present in the resume.
+
+Example:
+
+[
+  "Professional Summary",
+  "Technical Skills",
+  "Projects",
+  "Education",
+  "Certifications"
+]
+
+
+For "missing_common_sections":
+
+Identify common resume sections that are completely absent.
+
+Examples may include:
+
+- Work Experience
+- Internships
+- Projects
+- Certifications
+- Achievements
+
+Only mark a section as missing when it is genuinely absent.
+
+
+=====================================================
+EMPTY DATA RULE
+=====================================================
+
+If a section contains no information, return an empty array.
+
+For example:
+
+"work_experience": []
+
+Do NOT return placeholder entries such as:
+
+"work_experience": [
+  {
+    "role": "",
+    "organization": ""
+  }
+]
+
+when no work experience exists.
+
+
+=====================================================
+FINAL ACCURACY CHECK
+=====================================================
+
+Before returning the JSON, verify:
+
+- Every extracted fact exists in the supplied resume.
+- No skill has been invented.
+- No experience has been invented.
+- No achievement has been invented.
+- Projects have not been incorrectly classified as employment.
+- Missing information has not been guessed.
+- Output is valid JSON.
+
+
+=====================================================
+RESUME TEXT
+=====================================================
+
+{RESUME_TEXT}

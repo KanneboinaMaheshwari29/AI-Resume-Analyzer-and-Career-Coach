@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Resume Analyzer & Career Resume Coach
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-shell">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    AI Resume Analyzer
+                </h1>
+
+                <p>
+                    Career Resume Coach
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-nav">
+
+
+            <a href="#student-info" class="nav-link active">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    Student Profile
+                </span>
+
+            </a>
+
+
+            <a href="#career-goal" class="nav-link">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <span>
+                    Career Goal
+                </span>
+
+            </a>
+
+
+            <a href="#resume-upload" class="nav-link">
+
+                <i class="fa-solid fa-file-arrow-up"></i>
+
+                <span>
+                    Resume Upload
+                </span>
+
+            </a>
+
+
+            <a href="#analysis-info" class="nav-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Resume Analysis
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="sidebar-note">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <h3>
+                    Privacy First
+                </h3>
+
+                <p>
+                    Your uploaded resume is processed for analysis
+                    and is not intentionally stored permanently.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="top-bar">
+
+
+            <div class="mobile-brand">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                AI Resume Analyzer
+
+            </div>
+
+
+            <button
+                type="button"
+                id="darkModeBtn"
+                class="dark-mode-btn"
+            >
+
+                <i class="fa-solid fa-moon"></i>
+
+                <span>
+                    Dark Mode
+                </span>
+
+            </button>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+
+            <div class="hero-text">
+
+
+                <span class="hero-badge">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    AI-Powered Resume Review
+
+                </span>
+
+
+                <h2>
+
+                    Analyze your resume for your
+                    <span>target career.</span>
+
+                </h2>
+
+
+                <p>
+
+                    Upload your PDF resume and receive a structured
+                    analysis covering strengths, weaknesses, ATS readiness,
+                    career-goal match, missing information, and priority improvements.
+
+                </p>
+
+
+                <div class="hero-points">
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Resume Score
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        ATS Analysis
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Goal Match
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Improvement Plan
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="hero-card">
+
+
+                <div class="hero-card-icon">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                </div>
+
+
+                <h3>
+                    Professional Resume Review
+                </h3>
+
+
+                <p>
+                    The analysis is based on your actual resume content
+                    and target career information.
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form
+            id="resumeForm"
+            enctype="multipart/form-data"
+        >
+
+
+            <!-- =============================================
+                 1. STUDENT INFORMATION
+            ============================================== -->
+
+            <section
+                class="form-card"
+                id="student-info"
+            >
+
+
+                <div class="section-heading">
+
+
+                    <div class="section-number">
+                        1
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Student Information
+                        </h3>
+
+                        <p>
+                            Tell us about your current education and background.
+                        </p>
+
+                    </div>
+
+
+                    <div class="section-icon">
+
+                        <i class="fa-solid fa-user-graduate"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+
+                        <label for="name">
+
+                            Full Name
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            minlength="2"
+                            maxlength="60"
+                            required
+                        >
+
+
+                    </div>
+
+
+
+                    <!-- CURRENT EDUCATION -->
+
+                    <div class="form-group">
+
+
+                        <label for="education">
+
+                            Current Education
+
+                        </label>
+
+
+                        <select
+                            id="education"
+                            name="education"
+                            required
+                        >
+
+
+                            <option value="">
+                                Select current education
+                            </option>
+
+
+                            <option value="10th">
+                                10th / Secondary School
+                            </option>
+
+
+                            <option value="12th">
+                                12th / Intermediate
+                            </option>
+
+
+                            <option value="diploma">
+                                Diploma / Polytechnic
+                            </option>
+
+
+                            <option value="undergraduate">
+                                Undergraduate / Bachelor's Degree
+                            </option>
+
+
+                            <option value="postgraduate">
+                                Postgraduate / Master's Degree
+                            </option>
+
+
+                            <option value="completed graduate">
+                                Graduate / Degree Completed
+                            </option>
+
+
+                            <option value="other">
+                                Other
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <!-- DEGREE -->
+
+                    <div class="form-group">
+
+
+                        <label for="degree">
+
+                            Degree / Course
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="degree"
+                            name="degree"
+                            placeholder="Example: B.Tech CSE, BCA, B.Com, Diploma CSE"
+                            maxlength="120"
+                            required
+                        >
+
+
+                    </div>
+
+
+
+                    <!-- YEAR -->
+
+                    <div class="form-group">
+
+
+                        <label for="year">
+
+                            Current Year / Stage
+
+                        </label>
+
+
+                        <select
+                            id="year"
+                            name="year"
+                            required
+                        >
+
+
+                            <option value="">
+                                Select current year / stage
+                            </option>
+
+
+                            <option value="1st Year">
+                                1st Year
+                            </option>
+
+
+                            <option value="2nd Year">
+                                2nd Year
+                            </option>
+
+
+                            <option value="3rd Year">
+                                3rd Year
+                            </option>
+
+
+                            <option value="4th Year">
+                                4th Year
+                            </option>
+
+
+                            <option value="Final Year">
+                                Final Year
+                            </option>
+
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 2. CAREER GOAL
+            ============================================== -->
+
+            <section
+                class="form-card"
+                id="career-goal"
+            >
+
+
+                <div class="section-heading">
+
+
+                    <div class="section-number career-number">
+                        2
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Career Goal
+                        </h3>
+
+                        <p>
+                            Tell the analyzer what you want your resume to achieve.
+                        </p>
+
+                    </div>
+
+
+                    <div class="section-icon">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- TARGET ROLE -->
+
+                    <div class="form-group">
+
+
+                        <label for="targetRole">
+
+                            Target Job Role
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="targetRole"
+                            name="targetRole"
+                            placeholder="Example: Data Analyst, Software Engineer"
+                            maxlength="100"
+                            required
+                        >
+
+
+                    </div>
+
+
+
+                    <!-- TARGET INDUSTRY -->
+
+                    <div class="form-group">
+
+
+                        <label for="targetIndustry">
+
+                            Target Industry
+
+                        </label>
+
+
+                        <select
+                            id="targetIndustry"
+                            name="targetIndustry"
+                            required
+                        >
+
+
+                            <option value="">
+                                Select industry
+                            </option>
+
+
+                            <option value="Information Technology">
+                                Information Technology
+                            </option>
+
+
+                            <option value="Software Development">
+                                Software Development
+                            </option>
+
+
+                            <option value="Data and Analytics">
+                                Data & Analytics
+                            </option>
+
+
+                            <option value="Artificial Intelligence">
+                                Artificial Intelligence
+                            </option>
+
+
+                            <option value="Finance">
+                                Finance
+                            </option>
+
+
+                            <option value="Healthcare">
+                                Healthcare
+                            </option>
+
+
+                            <option value="Pharmaceutical">
+                                Pharmaceutical
+                            </option>
+
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+
+                            <option value="Marketing">
+                                Marketing
+                            </option>
+
+
+                            <option value="Business">
+                                Business / Management
+                            </option>
+
+
+                            <option value="Government">
+                                Government
+                            </option>
+
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <!-- CAREER GOAL -->
+
+                    <div class="form-group full-width">
+
+
+                        <label for="careerGoal">
+
+                            Career Goal
+
+                        </label>
+
+
+                        <textarea
+                            id="careerGoal"
+                            name="careerGoal"
+                            placeholder="Example: I want to apply for entry-level Data Analyst roles and improve my resume for analytics internships."
+                            maxlength="500"
+                            required
+                        ></textarea>
+
+
+                    </div>
+
+
+
+                    <!-- EXPERIENCE LEVEL -->
+
+                    <div class="form-group">
+
+
+                        <label for="experienceLevel">
+
+                            Experience Level
+
+                        </label>
+
+
+                        <select
+                            id="experienceLevel"
+                            name="experienceLevel"
+                            required
+                        >
+
+
+                            <option value="">
+                                Select experience level
+                            </option>
+
+
+                            <option value="No Experience">
+                                No Experience
+                            </option>
+
+
+                            <option value="Fresher">
+                                Fresher
+                            </option>
+
+
+                            <option value="Internship Experience">
+                                Internship Experience
+                            </option>
+
+
+                            <option value="Less than 1 Year">
+                                Less than 1 Year
+                            </option>
+
+
+                            <option value="1-2 Years">
+                                1–2 Years
+                            </option>
+
+
+                            <option value="2-5 Years">
+                                2–5 Years
+                            </option>
+
+
+                            <option value="5+ Years">
+                                5+ Years
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <!-- JOB TYPE -->
+
+                    <div class="form-group">
+
+
+                        <label for="jobType">
+
+                            Preferred Job Type
+
+                        </label>
+
+
+                        <select
+                            id="jobType"
+                            name="jobType"
+                            required
+                        >
+
+
+                            <option value="">
+                                Select job type
+                            </option>
+
+
+                            <option value="Internship">
+                                Internship
+                            </option>
+
+
+                            <option value="Full-Time">
+                                Full-Time
+                            </option>
+
+
+                            <option value="Part-Time">
+                                Part-Time
+                            </option>
+
+
+                            <option value="Contract">
+                                Contract
+                            </option>
+
+
+                            <option value="Remote">
+                                Remote
+                            </option>
+
+
+                            <option value="Hybrid">
+                                Hybrid
+                            </option>
+
+
+                            <option value="Not Sure">
+                                Not Sure
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <!-- SKILLS TO HIGHLIGHT -->
+
+                    <div class="form-group full-width">
+
+
+                        <label for="skillsToHighlight">
+
+                            Skills You Want to Highlight
+
+                        </label>
+
+
+                        <textarea
+                            id="skillsToHighlight"
+                            name="skillsToHighlight"
+                            placeholder="Example: Python, SQL, Power BI, communication, leadership"
+                            maxlength="500"
+                        ></textarea>
+
+
+                        <small>
+                            Enter only skills you genuinely possess or are currently developing.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- CURRENT PURPOSE -->
+
+                    <div class="form-group full-width">
+
+
+                        <label>
+
+                            What are you currently looking for?
+
+                        </label>
+
+
+                        <div class="radio-grid">
+
+
+                            <label class="radio-card">
+
+
+                                <input
+                                    type="radio"
+                                    name="currentPurpose"
+                                    value="Internship"
+                                    required
+                                >
+
+
+                                <span class="radio-icon">
+
+                                    <i class="fa-solid fa-user-clock"></i>
+
+                                </span>
+
+
+                                <span>
+                                    Internship
+                                </span>
+
+
+                            </label>
+
+
+
+                            <label class="radio-card">
+
+
+                                <input
+                                    type="radio"
+                                    name="currentPurpose"
+                                    value="Job"
+                                >
+
+
+                                <span class="radio-icon">
+
+                                    <i class="fa-solid fa-briefcase"></i>
+
+                                </span>
+
+
+                                <span>
+                                    Job
+                                </span>
+
+
+                            </label>
+
+
+
+                            <label class="radio-card">
+
+
+                                <input
+                                    type="radio"
+                                    name="currentPurpose"
+                                    value="Higher Studies"
+                                >
+
+
+                                <span class="radio-icon">
+
+                                    <i class="fa-solid fa-graduation-cap"></i>
+
+                                </span>
+
+
+                                <span>
+                                    Higher Studies
+                                </span>
+
+
+                            </label>
+
+
+
+                            <label class="radio-card">
+
+
+                                <input
+                                    type="radio"
+                                    name="currentPurpose"
+                                    value="Exploring"
+                                >
+
+
+                                <span class="radio-icon">
+
+                                    <i class="fa-solid fa-compass"></i>
+
+                                </span>
+
+
+                                <span>
+                                    Exploring
+                                </span>
+
+
+                            </label>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 3. RESUME UPLOAD
+            ============================================== -->
+
+            <section
+                class="form-card"
+                id="resume-upload"
+            >
+
+
+                <div class="section-heading">
+
+
+                    <div class="section-number upload-number">
+                        3
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Upload Resume
+                        </h3>
+
+                        <p>
+                            Upload a readable PDF version of your current resume.
+                        </p>
+
+                    </div>
+
+
+                    <div class="section-icon">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="upload-area">
+
+
+                    <input
+                        type="file"
+                        id="resume"
+                        name="resume"
+                        accept=".pdf,application/pdf"
+                        required
+                    >
+
+
+                    <label
+                        for="resume"
+                        class="upload-label"
+                        id="uploadLabel"
+                    >
+
+
+                        <div class="upload-icon">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        </div>
+
+
+                        <h4>
+                            Choose your resume PDF
+                        </h4>
+
+
+                        <p>
+                            Click here to select a file
+                        </p>
+
+
+                        <span>
+                            PDF only • Maximum 5 MB
+                        </span>
+
+
+                    </label>
+
+
+                </div>
+
+
+                <div
+                    class="selected-file hidden"
+                    id="selectedFile"
+                >
+
+
+                    <div>
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </div>
+
+
+                    <div class="selected-file-info">
+
+
+                        <strong id="selectedFileName">
+                            resume.pdf
+                        </strong>
+
+
+                        <span id="selectedFileSize">
+                            File selected
+                        </span>
+
+
+                    </div>
+
+
+                    <i class="fa-solid fa-circle-check file-check"></i>
+
+
+                </div>
+
+
+                <div class="privacy-message">
+
+
+                    <i class="fa-solid fa-lock"></i>
+
+
+                    <p>
+
+                        <strong>
+                            Resume privacy:
+                        </strong>
+
+                        The application processes your PDF for analysis.
+                        Resume files should not be permanently stored unless
+                        explicitly required for testing or deployment.
+
+                    </p>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =============================================
+                 SUBMIT
+            ============================================== -->
+
+            <div class="submit-section">
+
+
+                <div>
+
+
+                    <h3>
+                        Ready for your resume review?
+                    </h3>
+
+
+                    <p>
+                        Your resume will first be validated and processed.
+                    </p>
+
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="analyze-btn"
+                    id="analyzeBtn"
+                >
+
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+
+                    Analyze My Resume
+
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             RESULT AREA
+        ================================================== -->
+
+        <section
+            class="result-section hidden"
+            id="resultSection"
+        >
+
+
+            <div
+                id="resultContent"
+                class="result-content"
+            >
+
+
+                <div class="result-icon">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                </div>
+
+
+                <h2>
+                    Resume Processed
+                </h2>
+
+
+                <p>
+                    Resume processing results will appear here.
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYSIS INFO
+        ================================================== -->
+
+        <section
+            class="analysis-info"
+            id="analysis-info"
+        >
+
+
+            <div class="info-heading">
+
+
+                <span>
+                    What will the AI analyze?
+                </span>
+
+
+                <h2>
+                    A complete resume review
+                </h2>
+
+
+            </div>
+
+
+            <div class="analysis-grid">
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-star"></i>
+
+
+                    <h3>
+                        Resume Strengths
+                    </h3>
+
+
+                    <p>
+                        Identify sections and content that already work well.
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+
+                    <h3>
+                        Key Problems
+                    </h3>
+
+
+                    <p>
+                        Highlight important issues that should be corrected.
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-list-check"></i>
+
+
+                    <h3>
+                        Missing Information
+                    </h3>
+
+
+                    <p>
+                        Detect important sections or details not found in the resume.
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-robot"></i>
+
+
+                    <h3>
+                        ATS Readiness
+                    </h3>
+
+
+                    <p>
+                        Review structure, headings, keywords and readability.
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-crosshairs"></i>
+
+
+                    <h3>
+                        Career Goal Match
+                    </h3>
+
+
+                    <p>
+                        Compare resume content with your target role and goal.
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="analysis-card">
+
+
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+
+                    <h3>
+                        Priority Improvements
+                    </h3>
+
+
+                    <p>
+                        Receive practical recommendations ordered by importance.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DISCLAIMER
+        ================================================== -->
+
+        <section class="disclaimer">
+
+
+            <i class="fa-solid fa-circle-info"></i>
+
+
+            <div>
+
+
+                <h3>
+                    Important
+                </h3>
+
+
+                <p>
+
+                    Resume recommendations are AI-generated guidance.
+                    ATS systems, recruiter preferences and hiring decisions
+                    vary across employers. Do not add skills, achievements,
+                    technologies or experience that you do not genuinely possess.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+
+            <p>
+
+                AI Resume Analyzer & Career Resume Coach
+                • Prompt Engineering Project
+
+            </p>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- Custom JavaScript -->
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>

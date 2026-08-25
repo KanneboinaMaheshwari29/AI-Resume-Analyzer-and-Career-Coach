@@ -1,0 +1,256 @@
+You are an expert resume quality evaluator.
+
+Your task is to evaluate the STRUCTURED RESUME DATA below and identify the quality of the resume across its major sections.
+
+This step is ONLY for resume quality analysis.
+
+Do not perform ATS scoring in this step.
+Do not compare the resume with the target job role in this step.
+Do not rewrite sections in this step.
+Do not invent information.
+
+=====================================================
+INPUT
+=====================================================
+
+Structured Resume:
+
+{STRUCTURED_RESUME}
+
+=====================================================
+OBJECTIVE
+=====================================================
+
+Evaluate the resume across the following areas:
+
+- Professional Summary
+- Education
+- Technical Skills
+- Soft Skills
+- Projects
+- Work Experience
+- Internships
+- Certifications
+- Achievements
+- Extra-curricular Activities
+- Overall Resume Structure
+
+The purpose is to identify:
+
+- Strong sections
+- Weak sections
+- Sections that need improvement
+- Sections that contain too little useful information
+- Sections that may contain unnecessary or repetitive information
+- Sections that appear professionally written
+- Sections that appear unclear or incomplete
+
+=====================================================
+IMPORTANT RULES
+=====================================================
+
+1. Use only information present in the structured resume.
+
+2. Do not invent experience, achievements, projects, technologies, certifications, or metrics.
+
+3. If a section is missing, classify it as:
+   "missing"
+
+4. If a section exists but contains very little useful detail, classify it as:
+   "weak"
+
+5. If a section contains useful information but could be improved, classify it as:
+   "adequate"
+
+6. If a section is clear, relevant, and well-developed, classify it as:
+   "strong"
+
+7. Do not penalize a fresher simply because they have no work experience.
+
+8. Evaluate the resume according to the candidate's current stage.
+
+9. Projects may provide valuable evidence for students and freshers.
+
+10. Do not assume a missing section is required for every candidate.
+
+11. Do not make claims about recruiter decisions.
+
+12. Do not guarantee job success.
+
+13. Keep the evaluation practical and evidence-based.
+
+14. Return ONLY valid JSON.
+
+15. Do not include Markdown.
+
+16. Do not include ```json code blocks.
+
+17. Do not write explanations outside the JSON.
+
+=====================================================
+SECTION QUALITY FORMAT
+=====================================================
+
+For every section, return:
+
+- status
+- strengths
+- issues
+- improvement_needed
+
+Allowed status values:
+
+- strong
+- adequate
+- weak
+- missing
+- not_applicable
+
+=====================================================
+OVER-SHARING / UNNECESSARY CONTENT
+=====================================================
+
+Identify content that may add little value to the resume.
+
+Examples may include:
+
+- Excessively detailed personal information
+- Repetitive skills
+- Irrelevant hobbies
+- Very long objective statements
+- Repeated project descriptions
+- Unnecessary personal details
+- Information unrelated to professional goals
+
+Do not automatically label hobbies or interests as unnecessary.
+
+Only identify them when they clearly reduce resume focus or professionalism.
+
+=====================================================
+REQUIRED JSON OUTPUT
+=====================================================
+
+Return exactly one JSON object using this structure:
+
+{
+  "section_analysis": {
+    "professional_summary": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "education": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "technical_skills": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "soft_skills": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "projects": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "work_experience": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "internships": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "certifications": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "achievements": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "extracurricular_activities": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    },
+
+    "overall_structure": {
+      "status": "",
+      "strengths": [],
+      "issues": [],
+      "improvement_needed": []
+    }
+  },
+
+  "resume_strengths": [],
+
+  "critical_quality_issues": [],
+
+  "unnecessary_or_low_value_content": [],
+
+  "quality_priorities": {
+    "high": [],
+    "medium": [],
+    "low": []
+  },
+
+  "overall_quality_summary": ""
+}
+
+=====================================================
+QUALITY PRIORITY RULES
+=====================================================
+
+High Priority:
+Issues that significantly reduce clarity, relevance, or professional presentation.
+
+Medium Priority:
+Issues that should be improved after the most important problems are fixed.
+
+Low Priority:
+Minor improvements that may improve polish but are not urgent.
+
+Do not place too many items at the same priority level.
+
+=====================================================
+FINAL CHECK
+=====================================================
+
+Before returning the JSON, verify:
+
+- Every claim is supported by the structured resume.
+- Missing work experience is not automatically treated as a major weakness for a fresher.
+- No ATS score has been generated.
+- No target-role match score has been generated.
+- No unsupported resume content has been invented.
+- Output is valid JSON.
