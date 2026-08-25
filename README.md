@@ -32,6 +32,10 @@ The application is designed to provide useful career guidance without inventing 
 
 ---
 
+## 🌐 Live Demo
+
+[Try the AI Resume Analyzer & Career Coach](https://ai-resume-analyzer-and-career-coach.onrender.com/)
+
 # ✨ Features
 
 ## 📄 Resume Processing
@@ -1058,6 +1062,7 @@ Computer Science and Engineering
 
 GitHub: [KanneboinaMaheshwari29](https://github.com/KanneboinaMaheshwari29)
 
+GitHub Repo : https://github.com/KanneboinaMaheshwari29/AI-Resume-Analyzer-and-Career-Coach
 ---
 
 # 📜 Disclaimer
@@ -1067,3 +1072,20 @@ This application is an educational and career-support project.
 Resume recommendations, career-match scores, ATS scores, and other AI-generated assessments are advisory only. Recruiter preferences, ATS systems, job requirements, and hiring decisions vary between employers.
 
 Users are responsible for reviewing the generated recommendations and ensuring that their final resume contains only accurate and truthful information.
+
+## ⚠️ Gemini API Quota Note
+
+This project uses the Google Gemini API for AI-powered resume analysis through an 8-prompt pipeline.
+
+Gemini API usage is subject to rate limits and quota restrictions. If the available quota is exhausted, live AI analysis may temporarily fail or become unavailable.
+
+To support development and testing without consuming API quota, the application includes a **Mock/Development Mode** that:
+
+- Does not make Gemini API requests.
+- Uses predefined test responses.
+- Allows the UI, scoring logic, PDF processing, and report rendering to be tested safely.
+- Helps prevent unnecessary API usage during development.
+
+The complete Gemini pipeline has also been successfully tested with all **8 prompts**, producing real ATS, career-match, resume-quality, and final-report results.
+
+> Mock results are intended only for development and testing. Real resume analysis requires Gemini API access and available API quota.
